@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Prediction Result</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h1, h2 {
+            color: #0066cc;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        /* Add your additional styling here */
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Food Prediction Result</h1>
+    </header>
+    
+    <main>
+        <p>Predicted Food: {{ food }}</p>
+
+        {% if insights %}
+            <section>
+                <h2>Personalized Insights</h2>
+                <ul>
+                    {% for insight in insights %}
+                        <li>{{ insight }}</li>
+                    {% endfor %}
+                </ul>
+            </section>
+        {% else %}
+            <p>No specialized recommendations based on conditions</p>
+        {% endif %}
+
+        <section>
+            <h2>Statistics</h2>
+            <p>BMR: {{ bmr }}</p>
+            <p>Total Calories: {{ total_calories }}</p>
+            <p>Carb Ratio: {{ carb_ratio }}</p>
+        </section>
+
+        <section>
+            <h2>Nutritional Information for {{ food }}</h2>
+            <p>Calories: {{ protein * 4 + carbs * 4 + fats * 9 }}</p>
+            <p>Carbohydrates: {{ carbs }}g</p>
+            <p>Fat: {{ fats }}g</p>
+            <p>Protein: {{ protein }}g</p>
+            <p>Glycemic Index: {{ gi }}</p>
+            <p>Protein Ratio: {{ protein_ratio * 100 }}%</p>
+        </section>
+
+        <!-- Add additional insights and outputs here -->
+    </main>
+</body>
+</html>
